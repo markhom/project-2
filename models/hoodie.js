@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 // Creating different types of clothing
 
-const Hoodie = sequelize.define( 'Hoodie',
+const Hoodie = sequelize.define('Hoodie',
     {
         name: {
             type: DataTypes.STRING,
@@ -20,14 +20,21 @@ const Hoodie = sequelize.define( 'Hoodie',
         color: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
         modelName: 'hoodie',
-      }
+    }
 );
 
 module.exports = Hoodie;
