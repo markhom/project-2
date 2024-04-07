@@ -21,7 +21,13 @@ const Hoodie = sequelize.define( 'Hoodie',
             type: DataTypes.STRING,
             allowNull: false
         }
-    }
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'hoodie',
+      }
 );
 
 module.exports = Hoodie;

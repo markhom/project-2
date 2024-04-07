@@ -21,7 +21,13 @@ const TeeShirt = sequelize.define( 'TeeShirt',
             type: DataTypes.STRING,
             allowNull: false
         }
-    }
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'tshirt',
+      }
 );
 
 module.exports = TeeShirt;

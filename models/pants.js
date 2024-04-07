@@ -22,7 +22,13 @@ const Pants = sequelize.define( 'Pants',
             allowNull: false
         }
         
-    }
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'pants',
+      }
 );
 
 module.exports = Pants;
