@@ -1,17 +1,17 @@
 [
   {
-    "name": "Music Near Me",
-    "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-    "needed_funding": 5000
+    "name": "Shirts",
+    "description": "Check out the latest graphic tees, button-downs, and more from the hottest brands in streetwear!",
+    "needed_funding": 12
   },
   {
-    "name": "The Ultimate Tech Quiz",
-    "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-    "needed_funding": 10000
+    "name": "Pants",
+    "description": "Take a look at the latest jeans, joggers, and more from the hottest brands!",
+    "needed_funding": 25
   },
   {
-    "name": "Roll 'Em Up",
-    "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-    "needed_funding": 800
+    "name": "Shoes",
+    "description": "Check out these sneakers, basketball shoes, slides, heels and other footwear from your favorite designers!",
+    "needed_funding": 40
   }
 ]
