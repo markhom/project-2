@@ -4,14 +4,15 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-//forgot password route
-const forgotPasswordRoutes = require('./public/js/forgot-password')
+const withAuth = require('./utils/auth');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.set('views', path.join(__dirname, 'views'));
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
@@ -39,6 +40,12 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/profile', withAuth, (req, res) => {
+  res.render('profile', { user: req.session.user });
+});
+
+
 
 app.use(routes);
 
