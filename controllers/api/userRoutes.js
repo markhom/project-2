@@ -1,6 +1,9 @@
 const router = require('express').Router();
 // Import the User model from the models folder
 const { User } = require('../../models');
+const express = require('express');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
@@ -59,6 +62,51 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+//FORGOT PASSWORD routing
+
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Generate Password Reset Token
+    const token = crypto.randomBytes(20).toString('hex');
+    user.resetPasswordToken = token; 
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiration
+    await user.save();
+
+    // Send email with password reset link
+    const transporter = nodemailer.createTransport({
+      // email transporter configuration
+      service: 'gmail',
+  auth: {
+    user: 'your_email@gmail.com', // Your Gmail address
+    pass: 'your_password' // Your Gmail password
+  }
+    });
+
+    const mailOptions = {
+      from: 'markhomchik4@gmail.com',
+      to: user.email,
+      subject: 'Password Reset',
+      text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n`
+          + `Please click on the following link, or paste this into your browser to complete the process:\n\n`
+          + `http://${req.headers.host}/reset/${token}\n\n`
+          + `If you did not request this, please ignore this email and your password will remain unchanged.`
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.json({ message: 'Password reset email sent' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

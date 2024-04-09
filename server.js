@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const withAuth = require('./utils/auth');
+const forgotPasswordRoutes = require('./controllers/api/userRoutes');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -48,6 +49,8 @@ app.get('/profile', withAuth, (req, res) => {
 
 
 app.use(routes);
+
+app.use(forgotPasswordRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
