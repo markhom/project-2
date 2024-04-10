@@ -26,7 +26,7 @@ User.hasMany(Sweater, {
   onDelete: 'CASCADE'
 });
 
-User.hasMany(Tshirt, {
+User.hasMany(Teeshirt, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
