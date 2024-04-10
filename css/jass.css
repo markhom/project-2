@@ -1,8 +1,0 @@
-/* jass.css */
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: space-around; /* Evenly distribute space between items */
-  }
-  

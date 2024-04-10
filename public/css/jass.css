@@ -362,6 +362,39 @@ body {
   color: #1a1a1a;
 }
 
+.image-container {
+  display: flex;
+  flex-direction: wrcenterap;
+}
+
+
+.image-box {
+  margin: 0 5px; /* Adjusted margin */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.shirt {
+  width: 50%;
+  height: auto;
+  border-radius: 15px; /* Make edges rounder */
+  margin-bottom: 15px; /* Add margin bottom for spacing */
+}
+
+.pants {
+  width: 50%;
+  height: auto;
+  border-radius: 15px; /* Make edges rounder */
+  margin-bottom: 15px; /* Add margin bottom for spacing */
+}
+
+.shoes {
+  width: 50%;
+  height: auto;
+  border-radius: 15px; /* Make edges rounder */
+  margin-bottom: 15px; /* Add margin bottom for spacing */
+}
+
 h1,
 h2,
 h3,
