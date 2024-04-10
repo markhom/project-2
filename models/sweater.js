@@ -1,9 +1,11 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Creating different types of clothing
+class Sweater extends Model {}
 
-const Sweater = sequelize.define( 'Sweater',
+
+Sweater.init(
     {
         name: {
             type: DataTypes.STRING,
@@ -20,7 +22,21 @@ const Sweater = sequelize.define( 'Sweater',
         color: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'sweater',
+
     }
 );
 
