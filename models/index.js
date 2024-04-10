@@ -3,7 +3,7 @@ const Project = require('./Project');
 const Hoodie = require('./hoodie');
 const Pants = require('./pants');
 const Sweater = require('./sweater');
-const Teeshirt = require('./t-shirt');
+const Teeshirt = require('./teeshirt');
 
 // Creates a relationship between User and Project model, with the User having a "has many" relationship with Project model.
 User.hasMany(Project, {

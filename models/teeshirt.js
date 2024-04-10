@@ -34,7 +34,7 @@ TeeShirt.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'tshirt',
+        modelName: 'teeshirt',
         user_id: {
             type: DataTypes.INTEGER,
             references: {
