@@ -1,9 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Creating different types of clothing
+class Hoodie extends Model {}
 
-const Hoodie = sequelize.define('Hoodie',
+Hoodie.init(
     {
         name: {
             type: DataTypes.STRING,
